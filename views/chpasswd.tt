@@ -1,0 +1,80 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> 	<html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- General Metas -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	<!-- Force Latest IE rendering engine -->
+	<title>Login-chpasswd Form</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+	
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/skeleton.css">
+	<link rel="stylesheet" href="css/layout.css">
+	
+</head>
+<body>
+
+	<div class="notice">
+		<a href="/">登录</a>
+		<a href="" class="close">close</a>
+		<p class="warn">[% msg %]</p>
+	</div>
+
+
+
+	<!-- Primary Page Layout -->
+
+	<div class="container">
+		
+		<div class="form-bg">
+			<form action = '/chpasswd' method="post" >
+                [% if key %]
+
+[% if succ %]
+
+                <input type="submit" value='密码已修改' style="background:#AAA no-repeat; width:100%; height:37px;">
+
+[% else %]
+				<h2>Chpasswd [%IF usr %]---[% usr %][%end%]</h2>
+				<p><input type="password" placeholder="Password" name="Password" ></p>
+				<p><input type="password" placeholder="Password" name="Password2" ></p>
+<p><input type="hidden"  name="key" value="[% key %]" ></p> 
+                <input type="submit" value='修改密码' style="background:#AAA no-repeat; width:100%; height:37px;">
+
+[%end %]
+
+                [% else %]
+
+
+	         	<h2>Chpasswd- send mail</h2>
+				<p><input type="text" placeholder="Username" name="Username" ></p>
+                <input type="submit" value='发送到邮件' style="background:#AAA no-repeat; width:100%; height:37px;">
+                [% end %]
+			<form>
+		</div>
+
+	
+	<!--	<p class="forgot">Forgot your password? <a href="">Click here to reset it.</a></p> -->
+
+
+	</div><!-- container -->
+
+	<!-- JS  -->
+	<script>window.jQuery || document.write("<script src='js/jquery-1.5.1.min.js'>\x3C/script>")</script>
+	<script src="js/app.js"></script>
+	
+<!-- End Document -->
+</body>
+</html>
