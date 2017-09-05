@@ -37,14 +37,16 @@ sub mail
 {
     my ( $user, $keys, $host ) = @_;
 
-    return sendmail(
-        From    => 'deploy@here.com',
-        Subject => 'Nlogin chpasswd',
+    my %send = (
+        From    => 'sso@mydan.org',
+        Subject => 'sso.mydan.org chpasswd',
         'Content-Type' => 'text/html; charset=utf8',
         To => $user, 
         Message => "<a href=\"http://$host/chpasswd?key=$keys\">Change your password</a>",
     );
     
+    $send{Smtp} = $ENV{SMTP_ADDR} if $ENV{SMTP_ADDR};
+    return sendmail( %send );
 }
 
 any '/chpasswd' => sub {
