@@ -1,7 +1,7 @@
 CREATE DATABASE mydan_sso
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
-USE alarms;
+USE mydan_sso;
 SET NAMES utf8;
 
 DROP TABLE IF EXISTS `user`;
