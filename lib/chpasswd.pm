@@ -4,6 +4,7 @@ use Dancer qw(cookie debug);
 use Dancer::Plugin::Database;
 use Digest::MD5; 
 use Mail::Sendmail;
+use YAML::XS;
 use utf8;
 
 our $VERSION = '0.1';
@@ -46,6 +47,8 @@ sub mail
     );
     
     $send{Smtp} = $ENV{SMTP_ADDR} if $ENV{SMTP_ADDR};
+
+    print YAML::XS::Dump \%send;
     return sendmail( %send );
 }
 
@@ -110,8 +113,8 @@ any '/chpasswd' => sub {
                         else
                         {
                             $msg = 'Already sent';
-                            exe( "insert into chpasswd (`usr`,`key`) values ( '$name', '$keys')" ); 
                         }
+			exe( "insert into chpasswd (`usr`,`key`) values ( '$name', '$keys')" ); 
                     }
                     else { $msg = "\@$mail not allow"; }
                 }
