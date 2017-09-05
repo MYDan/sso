@@ -48,4 +48,4 @@ plugins:
 #session_dir: "/tmp/ns-dancer-sessions"
 
 set_session_domain: '.mydan.org'
-allow_chpasswd: 'mydan.org'
+allow_chpasswd: [ 'mydan.org', 'gmail.com' ]
