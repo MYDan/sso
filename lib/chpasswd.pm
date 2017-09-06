@@ -1,6 +1,6 @@
 package chpasswd;
 use Dancer ':syntax';
-use Dancer qw(cookie debug);
+use Dancer qw(cookie debug info);
 use Dancer::Plugin::Database;
 use Digest::MD5; 
 use Mail::Sendmail;
@@ -49,6 +49,7 @@ sub mail
     $send{Smtp} = $ENV{SMTP_ADDR} if $ENV{SMTP_ADDR};
 
     print YAML::XS::Dump \%send;
+    info "CHPASSWD: $user => http://$host/chpasswd?key=$keys\n";
     return sendmail( %send );
 }
 
