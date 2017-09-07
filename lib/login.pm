@@ -8,10 +8,11 @@ our $VERSION = '0.1';
 use utf8;
 use Digest::MD5;
 
-my @domain = ();
+my @domain;
 BEGIN
 {
     my $domain = config->{set_session_domain};
+    @domain = ();
     @domain = ref $domain ? @$domain : ( $domain ) if $domain;
 };
 
