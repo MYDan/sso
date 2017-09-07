@@ -32,5 +32,5 @@ CREATE TABLE IF NOT EXISTS `chpasswd`(
   `time`    timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `usr`    VARCHAR(64),
   `key`    VARCHAR(64),
-   PRIMARY KEY  (`id`),
+   PRIMARY KEY  (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
