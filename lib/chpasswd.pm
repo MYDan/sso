@@ -48,7 +48,6 @@ sub mail
     
     $send{Smtp} = $ENV{SMTP_ADDR} if $ENV{SMTP_ADDR};
 
-    print YAML::XS::Dump \%send;
     info "CHPASSWD: $user => http://$host/chpasswd?key=$keys\n";
     return sendmail( %send );
 }
