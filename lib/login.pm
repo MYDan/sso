@@ -12,8 +12,7 @@ my @domain;
 BEGIN
 {
     my $domain = config->{set_session_domain};
-    @domain = ();
-    @domain = ref $domain ? @$domain : ( $domain ) if $domain;
+    @domain = $domain ? ref $domain ? @$domain : ( $domain ) : ();
 };
 
 sub exe
