@@ -33,5 +33,4 @@ CREATE TABLE IF NOT EXISTS `chpasswd`(
   `usr`    VARCHAR(64),
   `key`    VARCHAR(64),
    PRIMARY KEY  (`id`),
-   UNIQUE KEY `usr` (`usr`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
