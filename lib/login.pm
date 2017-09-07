@@ -40,7 +40,7 @@ any '/' => sub {
 
     $ref = "http://$ref" if $ref && $ref !~ /^https?:\/\//;
 
-    if( my $sid = cookie( "nsssosid" ) )
+    if( my $sid = cookie( "sid" ) )
     {
          my $r = $sid !~ /^[a-zA-Z0-9]{64}$/ ? [] 
                  : exe("select info from info where `keys`='$sid'");
@@ -63,7 +63,7 @@ any '/' => sub {
               {
                   map{ 
                       set_cookie(
-                          nsssosid => $keys, 
+                          sid => $keys, 
                           ##expires => time + 10800, 
                           domain => $_, 
                           http_only => 0 
@@ -72,7 +72,7 @@ any '/' => sub {
               }
               else
               {
-                  set_cookie( nsssosid => $keys, http_only => 0 );
+                  set_cookie( sid => $keys, http_only => 0 );
               }
 
               exe( "insert  into info (`keys`,`info`) values ( '$keys', '$user')" );
