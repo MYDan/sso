@@ -99,7 +99,7 @@ any '/info' => sub {
 };
 
 any '/logout' => sub {
-    my $sid = request->params->{sid};
+    my $sid = cookie( "sid" );
 
     return "{ \"mesg\": \"sid format err\" }" 
         unless $sid && $sid =~ /^[a-zA-Z0-9]{64}$/;
