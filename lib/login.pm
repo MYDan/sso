@@ -44,7 +44,7 @@ any '/' => sub {
          my $r = $sid !~ /^[a-zA-Z0-9]{64}$/ ? [] 
                  : exe("select info from info where `keys`='$sid'");
 
-         redirect "$ref?sid=$sid" if $ref && $r && @$r > 0;
+         redirect "$ref" if $ref && $r && @$r > 0;
          return template 'login', +{ sid => $sid, user => $r->[0][0] }
              if $r && ref $r eq 'ARRAY' && @$r > 0;
     }
@@ -76,7 +76,7 @@ any '/' => sub {
 
               exe( "insert  into info (`keys`,`info`) values ( '$keys', '$user')" );
 
-              redirect $ref ? "$ref?sid=$keys" : '/';
+              redirect $ref ? $ref : '/';
           }
           else { $msg = 'password nomatch' }
     }
